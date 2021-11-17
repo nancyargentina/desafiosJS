@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0; }
+  
+  a {
+    text-decoration: none; }
+/*  estilo para el menu de navegación */
+.menu {
+    list-style-type: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    color: beige;
+    margin: 16px; }
+  
+.menu__item__link {
+    text-decoration: none;
+    color: beige;
+    font-family: 'Bebas Neue', sans-serif; }
+  
+a:hover {
+    color: #ff7fe3; }
+  
+/*  fin estilo de menu de navegación  */
+body {
+    background-color: #1f1f1f; }
+  
+main {
+    min-height: 800px; }
+  
+header {
+    background-color: black; }
+  
+footer {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  
+.footer__icons {
+    width: 25px; }
+  
+.logo {
+    width: 200px; }
+p {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    color: beige;
+    margin: 16px 5px 16px 5px;
+    padding: 0 2px; }
+/*encabezado*/
+.encabezado {
+    background-image: url("../images/ondatitulo.png");
+    background-size: 100% 25vh;
+    margin-bottom: 1%;
+    height: 25vh;
+    animation-name: zoomIn;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1; }
+  
+  .encabezado__titulo {
+    position: relative;
+    top: 4vh; }
+  
+  h1 {
+    font-family: "Yellowtail", cursive;
+    font-size: 10vh;
+    color: beige;
+    text-align: center;
+    text-shadow: 1px 1px 2px #7157ce; }
+  
+  #portadatitulo {
+    size: 50vh; }
+/*fin encabezado*/
