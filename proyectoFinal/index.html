@@ -39,7 +39,169 @@
         <div class="encabezado">
             <h1 class="encabezado__titulo">Calculadora</h1>
         </div>
-        <p>Estima el precio del servicio de manicuría que querés realizarte</p>
+        <h4>Podés estimar el precio del servicio de manicuría que querés realizarte. Sólo
+        elige tus opciones</h4>
+        <div id="grilla">
+            <section class="contenedorForm">
+                <div class="calculadora container border rounded-3">
+                    <form action="" method="post" novalidate>
+
+                    <div class="row g-3  mb-3">
+                        <div class="col-auto">
+                            <label for="serv" class="col-auto col-form-label">¿Qué servicio quisieras tomar?</label>
+                        </div>
+                        <div class="col-auto">
+                            <select class="form-select form-select-sm" name="servicio" id="serv" required>
+                                <option value="semi">Esmaltado semipermanente</option>
+                                <option value="esculpido">Uñas esculpidas</option>
+                                <option value="presson">Uñas postizas</option>
+                            </select>
+                        </div>                      
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">
+                            Selecciona una opción
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3 ">
+                        <p>Nailart simple:</p>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="nailartOption" id="nailartOption" value="0" checked>
+                            <label for="nailartOption"class="col-auto form-check-label">No nailart</label>
+                            <input class="form-check-input" type="radio" name="nailartOption" id="nailartOption" value="1">
+                            <label for="nailartOption"class="col-auto form-check-label">1 uña</label>
+                            <input class="form-check-input" type="radio" name="nailartOption" id="nailartOption" value="2">
+                            <label for="nailartOption"class="col-auto form-check-label">2 uñas</label>
+                            <input class="form-check-input" type="radio" name="nailartOption" id="nailartOption" value="3">
+                            <label for="nailartOption"class="col-auto form-check-label">3 uñas</label>
+                            <input class="form-check-input" type="radio" name="nailartOption" id="nailartOption" value="4">
+                            <label for="nailartOption"class="col-auto form-check-label">4 uñas</label>
+                            <input class="form-check-input" type="radio" name="nailartOption" id="nailartOption" value="5">
+                            <label for="nailartOption"class="col-auto form-check-label">5 uñas</label>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3 ">
+                        <p>Ilustración de personajes:</p>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="ilustracionOption" id="lustracionOption" value="0" checked>
+                            <label for="lustracionOption"class="col-auto form-check-label">No ilustración</label>
+                            <input class="form-check-input" type="radio" name="lustracionOption" id="lustracionOption" value="1">
+                            <label for="lustracionOption"class="col-auto form-check-label">1 uña</label>
+                            <input class="form-check-input" type="radio" name="lustracionOption" id="lustracionOption" value="2">
+                            <label for="lustracionOption"class="col-auto form-check-label">2 uñas</label>
+                            <input class="form-check-input" type="radio" name="lustracionOption" id="lustracionOption" value="3">
+                            <label for="lustracionOption"class="col-auto form-check-label">3 uñas</label>
+                            <input class="form-check-input" type="radio" name="lustracionOption" id="lustracionOption" value="4">
+                            <label for="lustracionOption"class="col-auto form-check-label">4 uñas</label>
+                            <input class="form-check-input" type="radio" name="lustracionOption" id="lustracionOption" value="5">
+                            <label for="lustracionOption"class="col-auto form-check-label">5 uñas</label>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3 ">
+                        <p>Encapsulados:</p>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="encapsuladoOption" id="encapsuladoOption" value="0" checked>
+                            <label for="encapsuladoOption"class="col-auto form-check-label">No encapsulado</label>
+                            <input class="form-check-input" type="radio" name="encapsuladoOption" id="encapsuladoOption" value="1">
+                            <label for="encapsuladoOption"class="col-auto form-check-label">1 uña</label>
+                            <input class="form-check-input" type="radio" name="encapsuladoOption" id="encapsuladoOption" value="2">
+                            <label for="encapsuladoOption"class="col-auto form-check-label">2 uñas</label>
+                            <input class="form-check-input" type="radio" name="encapsuladoOption" id="encapsuladoOption" value="3">
+                            <label for="encapsuladoOption"class="col-auto form-check-label">3 uñas</label>
+                            <input class="form-check-input" type="radio" name="encapsuladoOption" id="encapsuladoOption" value="4">
+                            <label for="encapsuladoOption"class="col-auto form-check-label">4 uñas</label>
+                            <input class="form-check-input" type="radio" name="encapsuladoOption" id="encapsuladoOption" value="5">
+                            <label for="encapsuladoOption"class="col-auto form-check-label">5 uñas</label>
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3 ">
+                        <p>Full Glitter:</p>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="glitterOption" id="glitterOption" value="0" checked>
+                            <label for="glitterOption"class="col-auto form-check-label">No glitter</label>
+                            <input class="form-check-input" type="radio" name="glitterOption" id="glitterOption" value="1">
+                            <label for="glitterOption"class="col-auto form-check-label">1 uña</label>
+                            <input class="form-check-input" type="radio" name="glitterOption" id="glitterOption" value="2">
+                            <label for="glitterOption"class="col-auto form-check-label">2 uñas</label>
+                            <input class="form-check-input" type="radio" name="glitterOption" id="glitterOption" value="3">
+                            <label for="glitterOption"class="col-auto form-check-label">3 uñas</label>
+                            <input class="form-check-input" type="radio" name="glitterOption" id="glitterOption" value="4">
+                            <label for="glitterOption"class="col-auto form-check-label">4 uñas</label>
+                            <input class="form-check-input" type="radio" name="glitterOption" id="glitterOption" value="5">
+                            <label for="glitterOption"class="col-auto form-check-label">5 uñas</label>
+                        </div>   
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <p>Cromados:</p>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="cromadoOption" id="cromadoOption" value="0" checked>
+                            <label for="cromadoOption"class=" col-auto form-check-label">No cromado</label>
+                            <input class="form-check-input" type="radio" name="cromadoOption" id="cromadoOption" value="1">
+                            <label for="cromadoOption"class="col-auto form-check-label">1 uña</label>
+                            <input class="form-check-input" type="radio" name="cromadoOption" id="cromadoOption" value="2">
+                            <label for="cromadoOption"class="col-auto form-check-label">2 uñas</label>
+                            <input class="form-check-input" type="radio" name="cromadoOption" id="cromadoOption" value="3">
+                            <label for="cromadoOption"class="col-auto form-check-label">3 uñas</label>
+                            <input class="form-check-input" type="radio" name="cromadoOption" id="cromadoOption" value="4">
+                            <label for="cromadoOption"class="col-auto form-check-label">4 uñas</label>
+                            <input class="form-check-input" type="radio" name="cromadoOption" id="cromadoOption" value="5">
+                            <label for="cromadoOption"class="col-auto form-check-label">5 uñas</label>
+                        </div>
+                    </div>
+                    <p><input class="boton btn btn-sm" type="reset" value="Limpiar datos"></p>
+                    <p><input class="boton btn btn-sm" type="submit" value="Enviar"></p>
+                    </form>
+                </div>
+            </section>
+            <section class="listaPrecios">
+                <table class="table table-dark" ><!--style="max-width:600px;">-->
+                    <thead>
+                        <th  colspan="3">Lista de Precios</th>
+                    </thead>                
+                    <tr><td colspan="2">
+                        Esmaltado semipermanente
+                    </td>
+                    <td>$ 900</td>
+                    </tr>
+                    <tr><td colspan="2">
+                        Uñas Esculpidas
+                    </td>
+                    <td>$ 2000</td></tr>
+                    <tr><td colspan="2">
+                        Uñas Postizas
+                    </td>
+                    <td>$ 1000</td></tr>
+                    <tr  class="table-active">
+                        <th>Decoraciones. (aplicables sobre esculpidas o semipermanente)</th>
+                        <th>1 Uña de cada mano</th>
+                        <th>Mano completa</th>
+                    </tr>               
+                    <tr><td>
+                        Nail Art simple
+                    </td>
+                    <td>$ 250</td><td>$ 500</td></tr>
+                    <tr><td>
+                        Ilustración de personajes
+                    </td>
+                    <td>$ 1000</td><td>$ 5000</td></tr>
+                    <tr><td>
+                        Encapsulados
+                    </td>
+                    <td>$ 350</td><td>$ 650</td></tr>
+                    <tr><td>
+                        Full glitter
+                    </td>
+                    <td>$ 250</td><td>$ 400</td></tr>
+                    <tr><td>
+                        Cromados
+                    </td>
+                    <td>$ 350</td><td>$ 700</td></tr>
+                </table>
+    
+            </section>
+        </div>
+        
+
+
     </main>
      <footer class="pie">
         <a href="https://www.instagram.com/nancy.carolina.martinez/"><img class="footer__icons" src="./images/instagram25px.png" alt="Instagram"></a>
