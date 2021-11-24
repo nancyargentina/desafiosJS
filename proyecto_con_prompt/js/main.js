@@ -8,10 +8,10 @@ const servAdicionalDisponibles= [new ServicioAdicional(1,"Nailart simple",250,50
                                         new ServicioAdicional(5,"Encapsulados",350,650)];
 
 let listaServicioUsuario=[];
-mostrarMenuPrincipal();
-mostrarMenuAdicionales();
-//let servicioElegido = parseInt(prompt(elegirMenuPrincipal()));
-//agregarServicioBase(servicioElegido);
-//let total= precioBase(servicioElegido) + agregarServiciosAdicionales();
+//mostrarMenuPrincipal();
+//mostrarMenuAdicionales();
+let servicioElegido = parseInt(prompt(elegirMenuPrincipal()));
+agregarServicioBase(servicioElegido);
+let total= precioBase(servicioElegido) + agregarServiciosAdicionales();
 
-//alert (`${mostrarServiciosElegidos()}\nEl precio Final estimado es: $${total}`);
+alert (`${mostrarServiciosElegidos()}\nEl precio Final estimado es: $${total}`);
