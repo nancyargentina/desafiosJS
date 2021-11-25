@@ -36,6 +36,9 @@ class servicioElegidos{
         this.precioTotal=unPrecioTotal;
     }
     mostarServicio(){
-        return(`${this.nombre} =>   precio inicial: $${this.precioInicial}   precio Total: $${this.precioTotal}\n`);
+        //return(`${this.nombre} =>   precio inicial: $${this.precioInicial}   precio Total: $${this.precioTotal}\n`);
+        return(`<tr><td>${this.nombre}</td>
+                    <td>$ ${this.precioInicial}</td>
+                    <td>$ ${this.precioTotal}</td></tr>`)
     }
 }

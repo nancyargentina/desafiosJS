@@ -59,18 +59,31 @@ function agregarServiciosAdicionales(){
         if (cantidad!=0){
             sumador+= adicional.precioXCant(cantidad);   //sumo el precio del servicio
             listaServicioUsuario.push(new servicioElegidos(adicional.id,adicional.nombre, adicional.precioUnitario, adicional.precioXCant(cantidad)));//guardo lo elegido
-        }
-        
+        }        
     });   
     return sumador;
 }
 function mostrarServiciosElegidos(){
     //retorna un string con todos servicios que seleccionó el usuario:
-    let result="Los servicios elegidos son:\n";
+    let result=`<table class="table table-dark">
+    <thead><th colspan="3">Los servicios elegidos son:</th></thead>
+    <tr><th>Servicio</th><th>Precio Unitario</th><th>Precio total</th></tr>`;
     listaServicioUsuario.forEach(element => {
         result+=(element.mostarServicio());
     });
     return result;
+}
+
+function mostrarResultado(untotal){
+    let padre= document.getElementsByTagName("main")[0];
+    let modal= document.createElement("div");
+    //modal.setAttribute("class","modal");
+    modal.setAttribute("id","modalResultado");
+    modal.innerHTML=(`${mostrarServiciosElegidos()}
+                <tr class="table-active"><th colspan="2">El precio Final estimado es:</th><th>$${untotal}</th></tr>
+                </table>`);
+    padre.appendChild(modal);
+    //document.getElementById("modalResultado").showModal();
 }
 function calcularPrecio(){
     let total=0;
@@ -78,6 +91,7 @@ function calcularPrecio(){
     let servicioElegido=padre.options[padre.selectedIndex].value;
     agregarServicioBase(servicioElegido);
     total+= precioBase(servicioElegido)+ agregarServiciosAdicionales();
-
-    alert (`${mostrarServiciosElegidos()}\nEl precio Final estimado es: $${total}`);
+    mostrarResultado(total);
 }
+
+
