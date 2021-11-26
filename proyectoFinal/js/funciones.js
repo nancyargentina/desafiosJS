@@ -65,9 +65,7 @@ function agregarServiciosAdicionales(){
 }
 function mostrarServiciosElegidos(){
     //retorna un string con todos servicios que seleccionó el usuario:
-    let result=`<table class="table table-dark">
-    <thead><th colspan="3">Los servicios elegidos son:</th></thead>
-    <tr><th>Servicio</th><th>Precio Unitario</th><th>Precio total</th></tr>`;
+    let result=`<tr><th>Servicio</th><th>Precio Unitario</th><th>Precio total</th></tr>`;
     listaServicioUsuario.forEach(element => {
         result+=(element.mostarServicio());
     });
@@ -75,17 +73,18 @@ function mostrarServiciosElegidos(){
 }
 
 function mostrarResultado(untotal){
-    let padre= document.getElementsByTagName("main")[0];
-    let modal= document.createElement("div");
-    //modal.setAttribute("class","modal");
-    modal.setAttribute("id","modalResultado");
-    modal.innerHTML=(`${mostrarServiciosElegidos()}
-                <tr class="table-active"><th colspan="2">El precio Final estimado es:</th><th>$${untotal}</th></tr>
-                </table>`);
-    padre.appendChild(modal);
-    //document.getElementById("modalResultado").showModal();
+    //let padre= document.getElementsByTagName("main")[0];
+    let padre=document.getElementById("resultado");
+    let tabla= document.createElement("table");
+    tabla.setAttribute("class","table table-dark");
+    //modal.setAttribute("id","modalResultado");
+    tabla.innerHTML=(`${mostrarServiciosElegidos()}
+                <tr class="table-active"><th colspan="2">El precio Final estimado es:</th><th>$${untotal}</th></tr>`);
+    padre.appendChild(tabla);
+    padre.style="display:''";
 }
 function calcularPrecio(){
+    event.preventDefault();
     let total=0;
     let padre=document.getElementById("servicio");
     let servicioElegido=padre.options[padre.selectedIndex].value;
