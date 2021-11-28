@@ -42,24 +42,16 @@
         <h4>Podés estimar el precio del servicio de manicuría que querés realizarte. Sólo
         elige tus opciones</h4>
         <div id="grilla">
-            <section class="contenedorForm">
+            <section class="contenedorForm mb-4">
                 <div class="calculadora container border rounded-3">
+                    <p class="fw-bolder text-uppercase">¿Qué servicio quisieras tomar?</p>
                     <form action="" method="post" novalidate id="formulario">
-                    <div class="row g-3  mb-3">
-                        <div class="col-auto">
-                            <label for="servicio" class="col-auto col-form-label">¿Qué servicio quisieras tomar?</label>
-                        </div>
-                        <div class="col-auto">
-                            <select class="form-select form-select-sm" name="servicio" id="servicio" required>
-                            </select>
-                        </div>                      
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">
-                            Selecciona una opción
-                        </div>
-                    </div>
-                    <p class="botones"><input class="boton btn btn-sm" type="reset" value="Borrar"></p>
-                    <p class="botones"><input class="boton btn btn-sm" type="submit" onclick="calcularPrecio()" value="Calcular Precio"></p>
+                         <div id="servicio">
+                         </div>   
+
+
+                    <p class="botones"><input class="boton btn btn-sm" type="reset" value="Borrar" id="borrar"></p>
+                    <p class="botones"><input class="boton btn btn-sm" type="submit" value="Calcular Precio" id="calcular"></p>
                     </form>
                 </div>
             </section>

@@ -1,37 +1,56 @@
 
-function mostrarMenuPrincipal(){
+function armarMenuPrincipal(){
+    //Arma botones con las opciones principales de servicios
     let selector=document.getElementById("servicio");
     servBaseDisponibles.forEach(element => {
-        let opcion=document.createElement("option");
+        let opcion=document.createElement("input");
+        opcion.type="radio";
+        opcion.setAttribute("class","btn-check");
+        opcion.setAttribute("name","servicio");
+        opcion.id=element.id;
+        opcion.addEventListener("change",mostrarMenuAdicionales);
+        selector.appendChild(opcion);
+        opcion=document.createElement("label");
+        opcion.setAttribute("class","btn boton btn-primary");
         opcion.innerHTML=element.mostrarTituloDeServicio();
-        opcion.setAttribute("value",element.id);
+        opcion.setAttribute("for",element.id);
         selector.appendChild(opcion);
     });
 }
-function mostrarMenuAdicionales(){
-    //retorna un string con el MENÚ a mostrar para elegir el servicio adicional
+function armarMenuAdicionales(){
+    //MENÚ de opciones para elegir el servicio adicional
    
     let padre=document.getElementById("formulario");    //nodo Formulario donde ingresaré el bloque
-    servAdicionalDisponibles.forEach(element => {       //por cada servicio adicional, creo bloque
+    let predecesor=document.querySelector('.botones');  //busco posicion dentro del form. Antes de los botones
+    let titulo=document.createElement("p");             // tag de subtítulo de las opciones con sus atributos
+    titulo.innerHTML="DECORACIONES ADICIONALES:";
+    titulo.setAttribute("class","fw-bolder");
+    titulo.style="display:none";
+    padre.insertBefore(titulo,predecesor); 
+
+    servAdicionalDisponibles.forEach(element => {       //por cada servicio adicional, creo grupo de opciones
         let unDiv=document.createElement("div");
-        unDiv.setAttribute("class","row g-3 mb-3" );
-        unDiv.innerHTML=`<p>${element.mostrarTituloDeServicio()}:</p>
-        <div class="form-check-inline adicionales">
-            <input class="form-check-input" type="radio" name="option${element.id}" id="option${element.id}" value="0" checked>
-            <label for="option${element.id}"class="col-auto form-check-label">0 uñas</label>
-            <input class="form-check-input" type="radio" name="option${element.id}" id="option${element.id}" value="1">
-            <label for="option${element.id}"class="col-auto form-check-label">1 uña</label>
-            <input class="form-check-input" type="radio" name="option${element.id}" id="option${element.id}" value="2">
-            <label for="option${element.id}"class="col-auto form-check-label">2 uñas</label>
-            <input class="form-check-input" type="radio" name="option${element.id}" id="option${element.id}" value="3">
-            <label for="option${element.id}"class="col-auto form-check-label">3 uñas</label>
-            <input class="form-check-input" type="radio" name="option${element.id}" id="option${element.id}" value="4">
-            <label for="option${element.id}"class="col-auto form-check-label">4 uñas</label>
-            <input class="form-check-input" type="radio" name="option${element.id}" id="option${element.id}" value="5">
-            <label for="option${element.id}"class="col-auto form-check-label">5 uñas</label>
-        </div>`;
-        let predecesor=document.querySelector('.botones');  //busco posicion dentro del form. Antes de los botones
+        unDiv.setAttribute("class","input-group row g-3 mb-3");
+        unDiv.innerHTML=`<label for="option${element.id}" class="input-group-text col-auto col-form-label fw-bolder text-light bg-dark">${element.mostrarTituloDeServicio()}:</label>
+            <select class="form-select form-select-sm col-auto" name="option${element.id}" id="option${element.id}">
+            <option selected value="0">Sin ${element.nombre}</option>
+            <option value="1">En 1 uña</option>
+            <option value="2">En 2 uñas</option>
+            <option value="3">En 3 uñas</option>
+            <option value="4">En 4 uñas</option>
+            <option value="5">En 5 uñas</option>
+        </select>`;
+        unDiv.style="display:none";        
         padre.insertBefore(unDiv,predecesor);               //inserto en el Form antes de los botones
+    });
+}
+function mostrarMenuAdicionales(e){
+    //cuando se elige un servicio se muestran los servicios adicionales
+    let padre=document.getElementById("formulario");
+    padre.querySelector("p").style="display:''";
+    let todosNodosAdicionales=padre.querySelectorAll(".input-group");
+    todosNodosAdicionales.forEach(unInput => {
+        unInput.style="display:''";
     });
 }
 
@@ -52,10 +71,8 @@ function agregarServiciosAdicionales(){
  
     servAdicionalDisponibles.forEach(adicional => {                    //por cada objeto servicioAdicional
         let cantidad=0;
-        let radios=document.getElementsByName(`option${adicional.id}`);//todos sus radiobutton (x ejemplo: todos los name=opcion1)
-        radios.forEach(element => {
-            if (element.checked){cantidad=parseInt(element.value);}//cantidad de uñas elegida
-        });
+        let opcionesValidas=document.getElementById(`option${adicional.id}`);//todos sus option (x ejemplo: todos los name=opcion1)
+         cantidad=parseInt(opcionesValidas.options[opcionesValidas.selectedIndex].value); //cantidad de uñas elegida
         if (cantidad!=0){
             sumador+= adicional.precioXCant(cantidad);   //sumo el precio del servicio
             listaServicioUsuario.push(new servicioElegidos(adicional.id,adicional.nombre, adicional.precioUnitario, adicional.precioXCant(cantidad)));//guardo lo elegido
@@ -73,24 +90,45 @@ function mostrarServiciosElegidos(){
 }
 
 function mostrarResultado(untotal){
-    //let padre= document.getElementsByTagName("main")[0];
     let padre=document.getElementById("resultado");
+    try{
+        let  hijoAnterior=document.getElementById("tablaResultado");
+        padre.removeChild(hijoAnterior);
+    }catch(e){
+        console.log(e)
+    }
     let tabla= document.createElement("table");
     tabla.setAttribute("class","table table-dark");
-    //modal.setAttribute("id","modalResultado");
+    tabla.setAttribute("id","tablaResultado");
+
     tabla.innerHTML=(`${mostrarServiciosElegidos()}
                 <tr class="table-active"><th colspan="2">El precio Final estimado es:</th><th>$${untotal}</th></tr>`);
     padre.appendChild(tabla);
     padre.style="display:''";
 }
-function calcularPrecio(){
-    event.preventDefault();
+
+function calcularPrecio(e){
+    e.preventDefault();
     let total=0;
-    let padre=document.getElementById("servicio");
-    let servicioElegido=padre.options[padre.selectedIndex].value;
+    listaServicioUsuario=[];
+    let nodoContenedor=document.getElementById("servicio");
+    let todasLasOpciones=nodoContenedor.querySelectorAll("input");
+    todasLasOpciones.forEach(element => {
+        if (element.checked){servicioElegido= element.id}
+        }
+    );
     agregarServicioBase(servicioElegido);
     total+= precioBase(servicioElegido)+ agregarServiciosAdicionales();
     mostrarResultado(total);
 }
-
-
+function borrarSelecciones(){
+    alert("entro al borrar");
+    listaServicioUsuario=[];
+    let padre=document.getElementById("resultado");
+    try{
+        let  hijoAnterior=document.getElementById("tablaResultado");
+        padre.removeChild(hijoAnterior);
+    }catch(e){
+        console.log(e)
+    }
+}

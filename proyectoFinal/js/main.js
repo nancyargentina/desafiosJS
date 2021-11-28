@@ -8,10 +8,9 @@ const servAdicionalDisponibles= [new ServicioAdicional(1,"Nailart simple",250,50
                                         new ServicioAdicional(5,"Encapsulados",350,650)];
 
 let listaServicioUsuario=[];
-mostrarMenuPrincipal();
-mostrarMenuAdicionales();
-//let servicioElegido = parseInt(prompt(elegirMenuPrincipal()));
-//agregarServicioBase(servicioElegido);
-//let total= precioBase(servicioElegido) + agregarServiciosAdicionales();
-
-//alert (`${mostrarServiciosElegidos()}\nEl precio Final estimado es: $${total}`);
+armarMenuPrincipal();
+armarMenuAdicionales();
+let btnCalcular= document.getElementById("formulario");
+let btnBorrar= document.getElementById("borrar");
+btnCalcular.addEventListener("submit",calcularPrecio);
+btnBorrar.addEventListener("reset",borrarSelecciones);

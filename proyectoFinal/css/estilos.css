@@ -73,7 +73,6 @@ p {
     background-color: #ff7fe3;
     border-color: #ff77e2; }
 
-
 /*encabezado*/
 .encabezado {
     background-image: url("../images/ondatitulo.png");
@@ -103,14 +102,15 @@ h1 {
     position: relative;
     display: inline-block;
     border-color: white;
-    border: 1px;
+    /*border: 1px;*/
     background-color: black;
     box-shadow: 0 0.125rem 0.25rem rgba(223, 220, 220, 0.521);
+    max-width: 700px;
 }
 #grilla{
     display: grid;
     grid-template-areas: "izquierda derecha";
-    grid-template-columns: 60% 40%;
+    grid-template-columns:60% 40%;
     grid-template-rows: auto; 
     color: beige;
     justify-items: center;              
