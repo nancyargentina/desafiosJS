@@ -1,9 +1,9 @@
 /*------------------------Clases------------------------*/
 class servicioBase{
     constructor(unId,unNombre,unPrecio){
-        this.id=unId;
-        this.nombre=unNombre;
-        this.precio=unPrecio;
+        this.id = unId;
+        this.nombre = unNombre;
+        this.precio = unPrecio;
     }
     mostrarTituloDeServicio(){
         return(`${this.id}. ${this.nombre}\n`);
@@ -12,13 +12,13 @@ class servicioBase{
 class ServicioAdicional{
     // servicios adicionales que aplica por par de uñas(1 uña por mano)
     constructor(unId,unNombre, unPrecioU, unPrecioFull){
-        this.id=unId;
-        this.nombre= unNombre;
-        this.precioUnitario=unPrecioU;
-        this.precioFull=unPrecioFull;
+        this.id = unId;
+        this.nombre = unNombre;
+        this.precioUnitario = unPrecioU;
+        this.precioFull = unPrecioFull;
     }
     precioXCant(cantidad){  //calcula el precio del adicional dependiendo en cuantos pares de uñas se aplicaría
-        if (cantidad==5){
+        if (cantidad == 5){
             return(this.precioFull);
         }
         return(this.precioUnitario * cantidad);
@@ -30,10 +30,10 @@ class ServicioAdicional{
 class servicioElegidos{
     // servicios elegidos por el usuario tanto base como adicionales
     constructor(unId,unNombre, unPrecioI, unPrecioTotal){
-        this.id=unId;
-        this.nombre= unNombre;
-        this.precioInicial=unPrecioI;
-        this.precioTotal=unPrecioTotal;
+        this.id = unId;
+        this.nombre = unNombre;
+        this.precioInicial = unPrecioI;
+        this.precioTotal = unPrecioTotal;
     }
     mostarServicio(){
         //return(`${this.nombre} =>   precio inicial: $${this.precioInicial}   precio Total: $${this.precioTotal}\n`);
