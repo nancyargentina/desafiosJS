@@ -86,7 +86,15 @@ function agregarServiciosAdicionales(){
     });   
     return sumador;
 }
-
+function guardarhistorial(){
+    //guardo historial de selecciones en el navegador, simulando el almacenamiento en base de datos.
+    let historial=JSON.parse(localStorage.getItem("colSelections"));
+    if (historial ==null){
+        historial=[];
+    }
+    historial.push(listaServicioUsuario);
+    localStorage.setItem("colSelections", JSON.stringify(historial));
+}
 function mostrarServiciosElegidos(){
     //retorna un string con todos servicios que seleccionó el usuario:
     let result =`<tr><th>Servicio</th><th>Precio Unitario</th><th>Precio total</th></tr>`;
@@ -127,6 +135,7 @@ function calcularPrecio(e){
     agregarServicioBase(servicioElegido);
     total += precioBase(servicioElegido) + agregarServiciosAdicionales();
     mostrarResultado(total);
+    guardarhistorial();
 }
 
 function borrarSelecciones(){
