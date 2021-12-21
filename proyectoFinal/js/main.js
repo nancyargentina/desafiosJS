@@ -7,11 +7,14 @@ const servAdicionalDisponibles= [new ServicioAdicional(1,"Nailart simple",250,50
                                         new ServicioAdicional(5,"Encapsulados",350,650)];
 
 let listaServicioUsuario=[];
-let btnCalcular= document.getElementById("formulario");
-let btnBorrar= document.getElementById("borrar");
+//let btnCalcular= document.getElementById("formulario");
+//let btnBorrar= document.getElementById("borrar");
+
 
 // Ejecución Main
 armarMenuPrincipal();
 armarMenuAdicionales();
-btnCalcular.addEventListener("submit",calcularPrecio);
-btnBorrar.addEventListener("click",borrarSelecciones);
+//btnCalcular.addEventListener("submit",calcularPrecio);
+//btnBorrar.addEventListener("click",borrarSelecciones);
+
+

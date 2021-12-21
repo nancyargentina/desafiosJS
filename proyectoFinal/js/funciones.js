@@ -1,6 +1,6 @@
 function armarMenuPrincipal(){
     //Arma botones con las opciones principales de servicios
-    let selector = document.getElementById("servicio");
+    let selector = $("#servicio");//document.getElementById("servicio");
 
     servBaseDisponibles.forEach(element => {
         let opcion = document.createElement("input");
@@ -9,25 +9,26 @@ function armarMenuPrincipal(){
         opcion.setAttribute("name","servicio");
         opcion.id = element.id;
         opcion.addEventListener("change",mostrarMenuAdicionales);
-        selector.appendChild(opcion);
+        selector.append(opcion);
         opcion = document.createElement("label");
         opcion.setAttribute("class","btn boton btn-primary");
         opcion.innerHTML = element.mostrarTituloDeServicio();
         opcion.setAttribute("for",element.id);
-        selector.appendChild(opcion);
+        selector.append(opcion);
     });
 }
 
 function armarMenuAdicionales(){
     //MENÚ de opciones para elegir el servicio adicional
-    let padre = document.getElementById("formulario");    //nodo Formulario donde ingresaré el bloque
-    let predecesor = document.querySelector('.botones');  //busco posicion dentro del form. Antes de los botones
+    let predecesor = $('.botones:first'); //busco posicion dentro del form. Antes de los botones
+    /*
+    document.querySelector('.botones'); 
     let titulo = document.createElement("p");             // tag de subtítulo de las opciones con sus atributos
-
     titulo.innerHTML = "DECORACIONES ADICIONALES:";
     titulo.setAttribute("class","fw-bolder");
-    titulo.style = "display:none";
-    padre.insertBefore(titulo,predecesor); 
+    titulo.style = "display:none";*/
+    //padre.insertBefore(titulo,predecesor); 
+    predecesor.before(`<p class="fw-bolder"style = "display:none">DECORACIONES ADICIONALES:</p>`);
 
     servAdicionalDisponibles.forEach(element => {       //por cada servicio adicional, creo grupo de opciones
         let unDiv = document.createElement("div");
@@ -44,19 +45,22 @@ function armarMenuAdicionales(){
             <option value="5">En 5 uñas</option>
         </select>`;
         unDiv.style = "display:none";        
-        padre.insertBefore(unDiv,predecesor);               //inserto en el Form antes de los botones
+        //padre.insertBefore(unDiv,predecesor);               //inserto en el Form antes de los botones
+        predecesor.before(unDiv);
     });
+    
 }
 
 function mostrarMenuAdicionales(e){
     //cuando se elige un servicio se muestran los servicios adicionales
-    let padre = document.getElementById("formulario");
+    $("#formulario p").show();
+    $(".input-group").show();
+    /*let padre = document.getElementById("formulario");
     let todosNodosAdicionales=padre.querySelectorAll(".input-group");
-
     padre.querySelector("p").style = "display:''";
     todosNodosAdicionales.forEach(unInput => {
         unInput.style = "display:''";
-    });
+    });*/
 }
 
 function precioBase(unIdServicio){
@@ -105,23 +109,27 @@ function mostrarServiciosElegidos(){
 }
 
 function mostrarResultado(untotal){
-    let padre=document.getElementById("resultado");
+    let padre=$("#resultado");//document.getElementById("resultado");
+
     try{
-        let  hijoAnterior = document.getElementById("tablaResultado");
-        padre.removeChild(hijoAnterior);
+        let  hijoAnterior =$("#tablaResultado"); //document.getElementById("tablaResultado");
+        hijoAnterior.remove();
     }catch(e){
         console.log(e)
     }
     let tabla = document.createElement("table");
-    tabla.setAttribute("class","table table-dark");
+    tabla.setAttribute("class","table tablaresultado");
     tabla.setAttribute("id","tablaResultado");
     tabla.innerHTML = (`${mostrarServiciosElegidos()}
                 <tr class="table-active"><th colspan="2">El precio Final estimado es:</th><th>$${untotal}</th></tr>`);
-    padre.appendChild(tabla);
-    padre.style = "display:''";
-}
+    padre.append(tabla);
 
-function calcularPrecio(e){
+    
+    $(".contenedorForm.mb-4").hide();
+    padre.show();//padre.style = "display:''";
+}
+$("#formulario").on("submit",function(e){   //function calcularPrecio(e){
+
     e.preventDefault();
     let total = 0;
     let nodoContenedor = document.getElementById("servicio");
@@ -136,16 +144,18 @@ function calcularPrecio(e){
     total += precioBase(servicioElegido) + agregarServiciosAdicionales();
     mostrarResultado(total);
     guardarhistorial();
-}
+});
 
-function borrarSelecciones(){
+
+$("#borrar").on("click",function(){
+//function borrarSelecciones(){
     listaServicioUsuario=[];
-    let padre = document.getElementById("resultado");
-    padre.style = "display:none";
+    let padre = $("#resultado");//document.getElementById("resultado");
+    padre.hide();//padre.style = "display:none";
     try{
-        let  hijoAnterior = document.getElementById("tablaResultado");
-        padre.removeChild(hijoAnterior);
+        let  hijoAnterior = $("#tablaResultado");//document.getElementById("tablaResultado");
+        hijoAnterior.removeChild();
     }catch(e){
         console.log(e)
     }
-}
+});

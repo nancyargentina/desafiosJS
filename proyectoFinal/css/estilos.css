@@ -121,6 +121,14 @@ h1 {
 .listaPrecios{
     grid-area: derecha;
 }
+
+.tablaresultado{
+    background-color: #7157ce;
+    color:beige;
+}
+.table-active{
+    background-color: #ff77e2;
+}
 /*fin organización cuerpo*/
 @media only screen and (max-width: 482px) {
     #grilla{
