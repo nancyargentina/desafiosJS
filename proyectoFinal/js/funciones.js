@@ -159,3 +159,11 @@ $("#borrar").on("click",function(){
         console.log(e)
     }
 });
+
+$("input .btn-check").on("change",function(){
+    console.log("entra");
+    $(this).fadeIn("slow")
+    .Delay(2000)
+    .fadeOut("slow");
+}
+)
