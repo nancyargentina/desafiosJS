@@ -53,6 +53,7 @@ function armarMenuAdicionales(){
 }
 
 function mostrarMenuAdicionales(e){
+    armarMenuAdicionales();
     //cuando se elige un servicio se muestran los servicios adicionales
     $("#formulario p").show();
     $(".input-group").show();
@@ -160,13 +161,3 @@ $("#borrar").on("click",function(){
         console.log(e)
     }
 });
-/*
-$("input[name='servicio']").on("change",function(){
-    let seleccionado = $("input:radio[name=servicio]:checked").val();
-    let valor= $(`label.btn.boton.btn-primary[for=${seleccionado}]`)
-    //$("h3").html(`Seleccionado:${valor.html()}`);
- 
-     $("h3valor").fadeOut().delay(200).fadeIn();
- }
- )
- */
