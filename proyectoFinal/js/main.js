@@ -26,7 +26,7 @@ armarMenuAdicionales();
     {opacity:"1"}
 );*/
 
-$(".encabezado__titulo").animate({opacity: 1, transform: `scale3d(0.3, 0.3, 0.3)`},"slow");
+//$(".encabezado__titulo").animate({opacity: 1, transform: `scale3d(0.3, 0.3, 0.3)`},"slow");
 //.delay(2000)
 //.css({ position: relative, top: "4vh"});
     

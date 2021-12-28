@@ -7,6 +7,7 @@ function armarMenuPrincipal(){
         opcion.type = "radio";
         opcion.setAttribute("class","btn-check");
         opcion.setAttribute("name","servicio");
+        opcion.setAttribute("value",element.id)
         opcion.id = element.id;
         opcion.addEventListener("change",mostrarMenuAdicionales);
         selector.append(opcion);
@@ -159,11 +160,13 @@ $("#borrar").on("click",function(){
         console.log(e)
     }
 });
-
-$("input .btn-check").on("change",function(){
-    console.log("entra");
-    $(this).fadeIn("slow")
-    .Delay(2000)
-    .fadeOut("slow");
-}
-)
+/*
+$("input[name='servicio']").on("change",function(){
+    let seleccionado = $("input:radio[name=servicio]:checked").val();
+    let valor= $(`label.btn.boton.btn-primary[for=${seleccionado}]`)
+    //$("h3").html(`Seleccionado:${valor.html()}`);
+ 
+     $("h3valor").fadeOut().delay(200).fadeIn();
+ }
+ )
+ */
