@@ -1,6 +1,6 @@
 function armarMenuPrincipal(){
     //Arma botones con las opciones principales de servicios
-    let selector = $("#servicio");//document.getElementById("servicio");
+    let selector = $("#servicio");
 
     servBaseDisponibles.forEach(element => {
         let opcion = document.createElement("input");
@@ -22,14 +22,8 @@ function armarMenuPrincipal(){
 function armarMenuAdicionales(){
     //MENÚ de opciones para elegir el servicio adicional
     let predecesor = $('.botones:first'); //busco posicion dentro del form. Antes de los botones
-    /*
-    document.querySelector('.botones'); 
-    let titulo = document.createElement("p");             // tag de subtítulo de las opciones con sus atributos
-    titulo.innerHTML = "DECORACIONES ADICIONALES:";
-    titulo.setAttribute("class","fw-bolder");
-    titulo.style = "display:none";*/
-    //padre.insertBefore(titulo,predecesor); 
-    predecesor.before(`<p class="fw-bolder"style = "display:none">DECORACIONES ADICIONALES:</p>`);
+
+    predecesor.before(`<p class="fw-bolder"style = "display:none">DECORACIONES ADICIONALES:</p>`);// tag de subtítulo de las opciones con sus atributos
 
     servAdicionalDisponibles.forEach(element => {       //por cada servicio adicional, creo grupo de opciones
         let unDiv = document.createElement("div");
@@ -46,7 +40,7 @@ function armarMenuAdicionales(){
             <option value="5">En 5 uñas</option>
         </select>`;
         unDiv.style = "display:none";        
-        //padre.insertBefore(unDiv,predecesor);               //inserto en el Form antes de los botones
+        //inserto en el Form antes de los botones
         predecesor.before(unDiv);
     });
     
@@ -57,12 +51,6 @@ function mostrarMenuAdicionales(e){
     //cuando se elige un servicio se muestran los servicios adicionales
     $("#formulario p").show();
     $(".input-group").show();
-    /*let padre = document.getElementById("formulario");
-    let todosNodosAdicionales=padre.querySelectorAll(".input-group");
-    padre.querySelector("p").style = "display:''";
-    todosNodosAdicionales.forEach(unInput => {
-        unInput.style = "display:''";
-    });*/
 }
 
 function precioBase(unIdServicio){
@@ -111,10 +99,10 @@ function mostrarServiciosElegidos(){
 }
 
 function mostrarResultado(untotal){
-    let padre=$("#resultado");//document.getElementById("resultado");
+    let padre=$("#resultado");
 
     try{
-        let  hijoAnterior =$("#tablaResultado"); //document.getElementById("tablaResultado");
+        let  hijoAnterior =$("#tablaResultado"); 
         hijoAnterior.remove();
     }catch(e){
         console.log(e)
@@ -125,11 +113,11 @@ function mostrarResultado(untotal){
     tabla.innerHTML = (`${mostrarServiciosElegidos()}
                 <tr class="table-active"><th colspan="2">El precio Final estimado es:</th><th>$${untotal}</th></tr>`);
     padre.append(tabla);
-
     
     $(".contenedorForm.mb-4").hide();
-    padre.show();//padre.style = "display:''";
+    padre.show();
 }
+
 $("#formulario").on("submit",function(e){   //function calcularPrecio(e){
 
     e.preventDefault();
@@ -152,10 +140,10 @@ $("#formulario").on("submit",function(e){   //function calcularPrecio(e){
 $("#borrar").on("click",function(){
 //function borrarSelecciones(){
     listaServicioUsuario=[];
-    let padre = $("#resultado");//document.getElementById("resultado");
-    padre.hide();//padre.style = "display:none";
+    let padre = $("#resultado");
+    padre.hide();
     try{
-        let  hijoAnterior = $("#tablaResultado");//document.getElementById("tablaResultado");
+        let  hijoAnterior = $("#tablaResultado");
         hijoAnterior.removeChild();
     }catch(e){
         console.log(e)

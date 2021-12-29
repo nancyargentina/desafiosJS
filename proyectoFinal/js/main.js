@@ -16,26 +16,8 @@ $.getJSON(urlGet, function (datos){
    console.log(servAdicionalDisponibles);
 })
 
-//let btnCalcular= document.getElementById("formulario");
-//let btnBorrar= document.getElementById("borrar");
-
-
 // Ejecución Main
 armarMenuPrincipal();
 //armarMenuAdicionales();
 //btnCalcular.addEventListener("submit",calcularPrecio);
 //btnBorrar.addEventListener("click",borrarSelecciones);
-
-
-//Ocultamos con fadeOut() todos los <h3>
-/*$(".encabezado__titulo").animate({ 
-     opacity:'0',
-     transform: scale3d(0.3, 0.3, 0.3)}, 
-    "slow",          
-    {opacity:"1"}
-);*/
-
-//$(".encabezado__titulo").animate({opacity: 1, transform: `scale3d(0.3, 0.3, 0.3)`},"slow");
-//.delay(2000)
-//.css({ position: relative, top: "4vh"});
-    
