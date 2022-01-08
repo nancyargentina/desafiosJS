@@ -1,0 +1,32 @@
+[
+   {
+      "id":1,
+      "nombre":"Nailart simple",
+      "precioUnitario":250,
+      "precioFull":500
+   },
+   {
+      "id":2,
+      "nombre":"Ilustración de personaje",
+      "precioUnitario":1000,
+      "precioFull":5000
+   },
+   {
+      "id":3,
+      "nombre":"Full glitter",
+      "precioUnitario":250,
+      "precioFull":400
+   },
+   {
+      "id":4,
+      "nombre":"Cromado",
+      "precioUnitario":350,
+      "precioFull":700
+   },
+   {
+      "id":5,
+      "nombre":"Encapsulados",
+      "precioUnitario":350,
+      "precioFull":650
+   }
+]
